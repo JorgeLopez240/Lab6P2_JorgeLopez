@@ -107,6 +107,47 @@ public class Main extends javax.swing.JFrame {
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         cb_tipoObjeto = new javax.swing.JComboBox<>();
+        jLabel25 = new javax.swing.JLabel();
+        bt_colorObjeto = new javax.swing.JButton();
+        jLabel26 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        ta_descripcion = new javax.swing.JTextArea();
+        jLabel27 = new javax.swing.JLabel();
+        tf_marca = new javax.swing.JTextField();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        tf_tamano = new javax.swing.JTextField();
+        tf_calidad = new javax.swing.JTextField();
+        jLabel30 = new javax.swing.JLabel();
+        cb_personaIngreso = new javax.swing.JComboBox<>();
+        jPanel9 = new javax.swing.JPanel();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        tf_tallaZapato = new javax.swing.JTextField();
+        jLabel33 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        ta_suela = new javax.swing.JTextArea();
+        jLabel34 = new javax.swing.JLabel();
+        tf_comodidad = new javax.swing.JTextField();
+        jLabel35 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        tf_tallaRopa = new javax.swing.JTextField();
+        tf_tela = new javax.swing.JTextField();
+        tf_pais = new javax.swing.JTextField();
+        jLabel39 = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        ta_dHogar = new javax.swing.JTextArea();
+        jLabel41 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        ta_instrucciones = new javax.swing.JTextArea();
+        jLabel42 = new javax.swing.JLabel();
+        tf_garantia = new javax.swing.JTextField();
+        jLabel43 = new javax.swing.JLabel();
+        jPanel10 = new javax.swing.JPanel();
+        bt_agregarObjeto = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
@@ -166,7 +207,7 @@ public class Main extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 25, Short.MAX_VALUE)
+            .addGap(0, 24, Short.MAX_VALUE)
         );
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -361,7 +402,7 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(bt_agregarPersona, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addGap(32, 32, 32)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(jLabel16))
@@ -406,36 +447,146 @@ public class Main extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Crear Persona", jPanel2);
 
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel23.setText("Ingrese los datos del objeto.");
+        jPanel3.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 11, -1, -1));
 
         jLabel24.setText("Tipo de objeto:");
+        jPanel3.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 58, -1, -1));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel24)
-                        .addGap(18, 18, 18)
-                        .addComponent(cb_tipoObjeto, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel23))
-                .addContainerGap(518, Short.MAX_VALUE))
+        jPanel3.add(cb_tipoObjeto, new org.netbeans.lib.awtextra.AbsoluteConstraints(122, 54, 135, -1));
+
+        jLabel25.setText("Color:");
+        jPanel3.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 103, -1, -1));
+        jPanel3.add(bt_colorObjeto, new org.netbeans.lib.awtextra.AbsoluteConstraints(78, 103, 90, 23));
+
+        jLabel26.setText("Descripción:");
+        jPanel3.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 145, -1, -1));
+
+        ta_descripcion.setColumns(20);
+        ta_descripcion.setRows(5);
+        jScrollPane1.setViewportView(ta_descripcion);
+
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 200, 55));
+
+        jLabel27.setText("Marca:");
+        jPanel3.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 217, -1, -1));
+        jPanel3.add(tf_marca, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 217, 211, -1));
+
+        jLabel28.setText("Tamaño:");
+        jPanel3.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 258, -1, -1));
+
+        jLabel29.setText("Calidad:");
+        jPanel3.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 296, -1, -1));
+        jPanel3.add(tf_tamano, new org.netbeans.lib.awtextra.AbsoluteConstraints(83, 255, 210, -1));
+        jPanel3.add(tf_calidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 293, 213, -1));
+
+        jLabel30.setText("Persona que lo ingreso:");
+        jPanel3.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 342, -1, -1));
+
+        jPanel3.add(cb_personaIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 340, 139, -1));
+
+        jPanel9.setBackground(new java.awt.Color(153, 153, 153));
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel23)
-                .addGap(23, 23, 23)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel24)
-                    .addComponent(cb_tipoObjeto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(556, Short.MAX_VALUE))
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 24, Short.MAX_VALUE)
         );
+
+        jPanel3.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 378, 775, -1));
+
+        jLabel31.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel31.setText("Zapato");
+        jPanel3.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, -1, -1));
+
+        jLabel32.setText("Talla:");
+        jPanel3.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 453, -1, -1));
+        jPanel3.add(tf_tallaZapato, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 450, 100, -1));
+
+        jLabel33.setText("Descripción suela:");
+        jPanel3.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 492, -1, -1));
+
+        ta_suela.setColumns(20);
+        ta_suela.setRows(5);
+        jScrollPane2.setViewportView(ta_suela);
+
+        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 510, 113, 63));
+
+        jLabel34.setText("Comodidad [1-10]:");
+        jPanel3.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 580, -1, -1));
+        jPanel3.add(tf_comodidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 580, 45, -1));
+
+        jLabel35.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel35.setText("Ropa");
+        jPanel3.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(287, 420, -1, -1));
+
+        jLabel36.setText("Talla:");
+        jPanel3.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(287, 456, -1, -1));
+
+        jLabel37.setText("Tipo de tela:");
+        jPanel3.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 510, -1, -1));
+
+        jLabel38.setText("Pais elab:");
+        jPanel3.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(287, 568, -1, -1));
+        jPanel3.add(tf_tallaRopa, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 460, 120, -1));
+        jPanel3.add(tf_tela, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 510, 90, -1));
+        jPanel3.add(tf_pais, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 570, 100, -1));
+
+        jLabel39.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel39.setText("Hogar");
+        jPanel3.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(507, 420, -1, -1));
+
+        jLabel40.setText("Descripcón:");
+        jPanel3.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 450, -1, -1));
+
+        ta_dHogar.setColumns(20);
+        ta_dHogar.setRows(5);
+        jScrollPane3.setViewportView(ta_dHogar);
+
+        jPanel3.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 450, 150, 43));
+
+        jLabel41.setText("Instrucciones:");
+        jPanel3.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 510, -1, -1));
+
+        ta_instrucciones.setColumns(20);
+        ta_instrucciones.setRows(5);
+        jScrollPane4.setViewportView(ta_instrucciones);
+
+        jPanel3.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 510, 140, 44));
+
+        jLabel42.setText("Garantía:");
+        jPanel3.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 580, -1, -1));
+        jPanel3.add(tf_garantia, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 580, 50, -1));
+
+        jLabel43.setText("meses");
+        jPanel3.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 580, -1, 20));
+
+        jPanel10.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel10.setPreferredSize(new java.awt.Dimension(30, 370));
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 30, Short.MAX_VALUE)
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 380, Short.MAX_VALUE)
+        );
+
+        jPanel3.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 0, -1, 380));
+
+        bt_agregarObjeto.setText("Agregar Objeto");
+        jPanel3.add(bt_agregarObjeto, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 150, 120, 60));
 
         jTabbedPane1.addTab("Crear Objeto", jPanel3);
 
@@ -538,11 +689,19 @@ public class Main extends javax.swing.JFrame {
         edad =Integer.parseInt(tf_edad.getText());
         altura=Integer.parseInt(tf_altura.getText());
         peso=Integer.parseInt(tf_peso.getText());
+        
+        DefaultComboBoxModel m4
+                = (DefaultComboBoxModel) cb_personaIngreso.getModel();
+        
+        Persona p;
+        
         if(cb_tipoPersona.getSelectedItem() instanceof Gerente){
             user=tf_userG.getText();
             password = pf_password.getText();
             cargo+=cb_cargo.getSelectedItem();
-            personas.add(new Gerente(cargo, password, cargo, id, nombre, sexo, estadoCivil, altura, peso, edad));
+            p=new Gerente(cargo, password, cargo, id, nombre, sexo, estadoCivil, altura, peso, edad);
+            personas.add(p);
+            m4.addElement(p);
             JOptionPane.showMessageDialog(this, "Gerente agregado exitosamente!");
         } else{
             String ocupacion, horario;
@@ -552,9 +711,12 @@ public class Main extends javax.swing.JFrame {
             horario=tf_horario.getText();
             semanas=Integer.parseInt(tf_tiempoTrabajado.getText());
             sueldo=Double.parseDouble(tf_sueldo.getText());
-            personas.add(new PersonalGeneral(ocupacion, horario, semanas, sueldo, id, nombre, sexo, estadoCivil, altura, peso, edad));
+            p=new PersonalGeneral(ocupacion, horario, semanas, sueldo, id, nombre, sexo, estadoCivil, altura, peso, edad);
+            personas.add(p);
+            m4.addElement(p);
             JOptionPane.showMessageDialog(this, "Personal General agregado existosamente!");
         }
+        
         tf_id.setText("");
         tf_nombre.setText("");
         tf_edad.setText("");
@@ -603,8 +765,11 @@ public class Main extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup bg_estado;
     private javax.swing.ButtonGroup bg_sexo;
+    private javax.swing.JButton bt_agregarObjeto;
     private javax.swing.JButton bt_agregarPersona;
+    private javax.swing.JButton bt_colorObjeto;
     private javax.swing.JComboBox<String> cb_cargo;
+    private javax.swing.JComboBox<String> cb_personaIngreso;
     private javax.swing.JComboBox<String> cb_tipoObjeto;
     private javax.swing.JComboBox<String> cb_tipoPersona;
     private javax.swing.JLabel jLabel1;
@@ -624,14 +789,34 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -639,21 +824,39 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollBar jScrollBar1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JPasswordField pf_password;
     private javax.swing.JRadioButton rb_casado;
     private javax.swing.JRadioButton rb_femenino;
     private javax.swing.JRadioButton rb_masculino;
     private javax.swing.JRadioButton rb_soltero;
+    private javax.swing.JTextArea ta_dHogar;
+    private javax.swing.JTextArea ta_descripcion;
+    private javax.swing.JTextArea ta_instrucciones;
+    private javax.swing.JTextArea ta_suela;
     private javax.swing.JTextField tf_altura;
+    private javax.swing.JTextField tf_calidad;
+    private javax.swing.JTextField tf_comodidad;
     private javax.swing.JTextField tf_edad;
+    private javax.swing.JTextField tf_garantia;
     private javax.swing.JTextField tf_horario;
     private javax.swing.JTextField tf_id;
+    private javax.swing.JTextField tf_marca;
     private javax.swing.JTextField tf_nombre;
     private javax.swing.JTextField tf_ocupacion;
+    private javax.swing.JTextField tf_pais;
     private javax.swing.JTextField tf_peso;
     private javax.swing.JTextField tf_sueldo;
+    private javax.swing.JTextField tf_tallaRopa;
+    private javax.swing.JTextField tf_tallaZapato;
+    private javax.swing.JTextField tf_tamano;
+    private javax.swing.JTextField tf_tela;
     private javax.swing.JTextField tf_tiempoTrabajado;
     private javax.swing.JTextField tf_userG;
     // End of variables declaration//GEN-END:variables
