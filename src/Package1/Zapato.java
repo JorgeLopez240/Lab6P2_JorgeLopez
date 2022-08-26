@@ -46,7 +46,7 @@ public class Zapato extends Objeto{
 
     @Override
     public String toString() {
-        return "Zapato{" + "descripcion_suela=" + descripcion_suela + '}';
+        return "Zapato";
     }
     
     

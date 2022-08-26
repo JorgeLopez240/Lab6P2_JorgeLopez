@@ -46,7 +46,7 @@ public class Ohogar extends Objeto {
 
     @Override
     public String toString() {
-        return "Ohogar{" + "garantia=" + garantia + '}';
+        return "De hogar";
     }
 
     

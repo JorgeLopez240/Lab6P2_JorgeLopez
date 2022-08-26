@@ -34,6 +34,15 @@ public class Main extends javax.swing.JFrame {
         m2.addElement("Cargo de Sucursal");
         cb_cargo.setModel(m2);
         
+        
+        //Modelo - Tipo de Objeto a crear
+        DefaultComboBoxModel m3
+                = (DefaultComboBoxModel) cb_tipoObjeto.getModel();
+        m3.addElement(new Zapato());
+        m3.addElement(new Ropa());
+        m3.addElement(new Ohogar());
+        cb_tipoObjeto.setModel(m3);
+        
     }
 
     
@@ -95,6 +104,9 @@ public class Main extends javax.swing.JFrame {
         bt_agregarPersona = new javax.swing.JButton();
         pf_password = new javax.swing.JPasswordField();
         jPanel3 = new javax.swing.JPanel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        cb_tipoObjeto = new javax.swing.JComboBox<>();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
@@ -394,15 +406,35 @@ public class Main extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Crear Persona", jPanel2);
 
+        jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel23.setText("Ingrese los datos del objeto.");
+
+        jLabel24.setText("Tipo de objeto:");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 775, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel24)
+                        .addGap(18, 18, 18)
+                        .addComponent(cb_tipoObjeto, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel23))
+                .addContainerGap(518, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 632, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel23)
+                .addGap(23, 23, 23)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel24)
+                    .addComponent(cb_tipoObjeto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(556, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Crear Objeto", jPanel3);
@@ -573,6 +605,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.ButtonGroup bg_sexo;
     private javax.swing.JButton bt_agregarPersona;
     private javax.swing.JComboBox<String> cb_cargo;
+    private javax.swing.JComboBox<String> cb_tipoObjeto;
     private javax.swing.JComboBox<String> cb_tipoPersona;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -589,6 +622,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

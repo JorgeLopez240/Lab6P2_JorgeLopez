@@ -46,7 +46,7 @@ public class Ropa extends Objeto{
 
     @Override
     public String toString() {
-        return "Ropa{" + "talla=" + talla + '}';
+        return "Ropa";
     }
     
     
