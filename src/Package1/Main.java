@@ -1,8 +1,10 @@
 
 package Package1;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JColorChooser;
 import javax.swing.JOptionPane;
 
 public class Main extends javax.swing.JFrame {
@@ -42,6 +44,24 @@ public class Main extends javax.swing.JFrame {
         m3.addElement(new Ropa());
         m3.addElement(new Ohogar());
         cb_tipoObjeto.setModel(m3);
+        
+        
+        tf_tallaRopa.setEnabled(false);
+        tf_tela.setEnabled(false);
+        tf_pais.setEnabled(false);
+        
+        cb_lugarCasa.setEnabled(false);
+        ta_instrucciones.setEnabled(false);
+        tf_garantia.setEnabled(false);
+        
+        
+        //Modelo lugar de la casa
+        DefaultComboBoxModel m5
+                = (DefaultComboBoxModel) cb_lugarCasa.getModel();
+        m5.addElement("Sala");
+        m5.addElement("Comedor");
+        m5.addElement("Baño");
+        m5.addElement("Cocina");
         
     }
 
@@ -138,16 +158,15 @@ public class Main extends javax.swing.JFrame {
         tf_pais = new javax.swing.JTextField();
         jLabel39 = new javax.swing.JLabel();
         jLabel40 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        ta_dHogar = new javax.swing.JTextArea();
         jLabel41 = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
+        js_insh = new javax.swing.JScrollPane();
         ta_instrucciones = new javax.swing.JTextArea();
         jLabel42 = new javax.swing.JLabel();
         tf_garantia = new javax.swing.JTextField();
         jLabel43 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         bt_agregarObjeto = new javax.swing.JButton();
+        cb_lugarCasa = new javax.swing.JComboBox<>();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
@@ -456,10 +475,21 @@ public class Main extends javax.swing.JFrame {
         jLabel24.setText("Tipo de objeto:");
         jPanel3.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 58, -1, -1));
 
+        cb_tipoObjeto.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_tipoObjetoItemStateChanged(evt);
+            }
+        });
         jPanel3.add(cb_tipoObjeto, new org.netbeans.lib.awtextra.AbsoluteConstraints(122, 54, 135, -1));
 
         jLabel25.setText("Color:");
         jPanel3.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 103, -1, -1));
+
+        bt_colorObjeto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_colorObjetoMouseClicked(evt);
+            }
+        });
         jPanel3.add(bt_colorObjeto, new org.netbeans.lib.awtextra.AbsoluteConstraints(78, 103, 90, 23));
 
         jLabel26.setText("Descripción:");
@@ -547,20 +577,14 @@ public class Main extends javax.swing.JFrame {
         jLabel40.setText("Descripcón:");
         jPanel3.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 450, -1, -1));
 
-        ta_dHogar.setColumns(20);
-        ta_dHogar.setRows(5);
-        jScrollPane3.setViewportView(ta_dHogar);
-
-        jPanel3.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 450, 150, 43));
-
         jLabel41.setText("Instrucciones:");
         jPanel3.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 510, -1, -1));
 
         ta_instrucciones.setColumns(20);
         ta_instrucciones.setRows(5);
-        jScrollPane4.setViewportView(ta_instrucciones);
+        js_insh.setViewportView(ta_instrucciones);
 
-        jPanel3.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 510, 140, 44));
+        jPanel3.add(js_insh, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 510, 140, 44));
 
         jLabel42.setText("Garantía:");
         jPanel3.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 580, -1, -1));
@@ -586,7 +610,14 @@ public class Main extends javax.swing.JFrame {
         jPanel3.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 0, -1, 380));
 
         bt_agregarObjeto.setText("Agregar Objeto");
+        bt_agregarObjeto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_agregarObjetoMouseClicked(evt);
+            }
+        });
         jPanel3.add(bt_agregarObjeto, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 150, 120, 60));
+
+        jPanel3.add(cb_lugarCasa, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 450, 130, -1));
 
         jTabbedPane1.addTab("Crear Objeto", jPanel3);
 
@@ -701,7 +732,7 @@ public class Main extends javax.swing.JFrame {
             cargo+=cb_cargo.getSelectedItem();
             p=new Gerente(cargo, password, cargo, id, nombre, sexo, estadoCivil, altura, peso, edad);
             personas.add(p);
-            m4.addElement(p);
+            m4.addElement(p.getNombre());
             JOptionPane.showMessageDialog(this, "Gerente agregado exitosamente!");
         } else{
             String ocupacion, horario;
@@ -713,7 +744,7 @@ public class Main extends javax.swing.JFrame {
             sueldo=Double.parseDouble(tf_sueldo.getText());
             p=new PersonalGeneral(ocupacion, horario, semanas, sueldo, id, nombre, sexo, estadoCivil, altura, peso, edad);
             personas.add(p);
-            m4.addElement(p);
+            m4.addElement(p.getNombre());
             JOptionPane.showMessageDialog(this, "Personal General agregado existosamente!");
         }
         
@@ -729,6 +760,120 @@ public class Main extends javax.swing.JFrame {
         tf_tiempoTrabajado.setText("");
         tf_sueldo.setText("");
     }//GEN-LAST:event_bt_agregarPersonaMouseClicked
+
+    private void cb_tipoObjetoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_tipoObjetoItemStateChanged
+        if(evt.getStateChange()==2){
+            if(cb_tipoObjeto.getSelectedItem() instanceof Zapato){
+                tf_tallaRopa.setEnabled(false);
+                tf_tela.setEnabled(false);
+                tf_pais.setEnabled(false);
+
+                cb_lugarCasa.setEnabled(false);
+                ta_instrucciones.setEnabled(false);
+                tf_garantia.setEnabled(false);
+                
+                tf_tallaZapato.setEnabled(true);
+                ta_suela.setEnabled(true);
+                tf_comodidad.setEnabled(true);
+                
+            } else if(cb_tipoObjeto.getSelectedItem() instanceof Ropa){
+                tf_tallaRopa.setEnabled(true);
+                tf_tela.setEnabled(true);
+                tf_pais.setEnabled(true);
+                
+                cb_lugarCasa.setEnabled(false);
+                ta_instrucciones.setEnabled(false);
+                tf_garantia.setEnabled(false);
+                
+                tf_tallaZapato.setEnabled(false);
+                ta_suela.setEnabled(false);
+                tf_comodidad.setEnabled(false);
+                
+            } else{
+                cb_lugarCasa.setEnabled(true);
+                ta_instrucciones.setEnabled(true);
+                tf_garantia.setEnabled(true);
+                
+                tf_tallaRopa.setEnabled(false);
+                tf_tela.setEnabled(false);
+                tf_pais.setEnabled(false);
+                
+                tf_tallaZapato.setEnabled(false);
+                ta_suela.setEnabled(false);
+                tf_comodidad.setEnabled(false);
+                
+            }
+        }
+    }//GEN-LAST:event_cb_tipoObjetoItemStateChanged
+
+    private void bt_agregarObjetoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_agregarObjetoMouseClicked
+        Objeto x;
+        Color color;
+        double tamano;
+        String descripcion, marca, calidad;
+        Persona p=new Persona();
+        color = bt_colorObjeto.getBackground();
+        tamano = Integer.parseInt(tf_tamano.getText());
+        descripcion = ta_descripcion.getText();
+        marca = tf_marca.getText();
+        calidad = tf_calidad.getText();
+       
+        String p2="";
+               p2 +=cb_personaIngreso.getSelectedItem();
+        
+        for (Persona pe : personas) {
+            if(pe.getNombre().equals(p2)){
+                p=(Persona)pe;
+            }
+        }
+       
+               
+        if(cb_tipoObjeto.getSelectedItem() instanceof Zapato){
+            double talla=Double.parseDouble(tf_tallaZapato.getText());
+            String des = ta_suela.getText();
+            int comodidad=Integer.parseInt(tf_comodidad.getText());
+            x=new Zapato(talla, des, comodidad, color, descripcion, marca, tamano, calidad, p);
+            objetos.add(x);
+            JOptionPane.showMessageDialog(this, "Zapato agregado exitosamente!");
+        } else if(cb_tipoObjeto.getSelectedItem() instanceof Ropa){
+            double talla=Double.parseDouble(tf_tallaRopa.getText());
+            String tela = tf_tela.getText();
+            String pais = tf_pais.getText();
+            x=new Ropa(talla, tela, pais, color, descripcion, marca, tamano, calidad, p);
+            objetos.add(x);
+            JOptionPane.showMessageDialog(this, "Ropa agregada exitosamente!");
+        } else{
+            String lugar = "";
+            lugar += cb_lugarCasa.getSelectedItem();
+            String ins , garantia;
+            ins =ta_instrucciones.getText();
+            garantia=tf_garantia.getText();
+            x=new Ohogar(lugar, ins, garantia, color, descripcion, marca, tamano, calidad, p);
+            objetos.add(x);
+            JOptionPane.showMessageDialog(this, "Objeto de hogar agregado exitosamente!");
+        }
+        ta_descripcion.setText("");
+        tf_marca.setText("");
+        tf_tamano.setText("");
+        tf_calidad.setText("");
+        
+        tf_tallaRopa.setText("");
+        tf_tela.setText("");
+        tf_pais.setText("");
+                
+        tf_tallaZapato.setText("");
+        ta_suela.setText("");
+        tf_comodidad.setText("");
+        
+        ta_instrucciones.setText("");
+        tf_garantia.setText("");
+        
+    }//GEN-LAST:event_bt_agregarObjetoMouseClicked
+
+    private void bt_colorObjetoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_colorObjetoMouseClicked
+        Color c =JColorChooser.showDialog(this, "Elige un color", Color.yellow);
+        bt_colorObjeto.setBackground(c);
+    }//GEN-LAST:event_bt_colorObjetoMouseClicked
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -769,6 +914,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton bt_agregarPersona;
     private javax.swing.JButton bt_colorObjeto;
     private javax.swing.JComboBox<String> cb_cargo;
+    private javax.swing.JComboBox<String> cb_lugarCasa;
     private javax.swing.JComboBox<String> cb_personaIngreso;
     private javax.swing.JComboBox<String> cb_tipoObjeto;
     private javax.swing.JComboBox<String> cb_tipoPersona;
@@ -828,15 +974,13 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JScrollPane js_insh;
     private javax.swing.JPasswordField pf_password;
     private javax.swing.JRadioButton rb_casado;
     private javax.swing.JRadioButton rb_femenino;
     private javax.swing.JRadioButton rb_masculino;
     private javax.swing.JRadioButton rb_soltero;
-    private javax.swing.JTextArea ta_dHogar;
     private javax.swing.JTextArea ta_descripcion;
     private javax.swing.JTextArea ta_instrucciones;
     private javax.swing.JTextArea ta_suela;
@@ -862,5 +1006,6 @@ public class Main extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private ArrayList<Persona> personas = new ArrayList();
-
+    private ArrayList<Objeto> objetos = new ArrayList();
+    
 }
