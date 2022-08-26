@@ -54,7 +54,7 @@ public class PersonalGeneral extends Persona{
 
     @Override
     public String toString() {
-        return "PersonalGeneral{" + "sueldo=" + sueldo + '}';
+        return "PersonalGeneral";
     }
     
 }

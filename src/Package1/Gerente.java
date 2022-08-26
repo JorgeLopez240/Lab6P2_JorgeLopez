@@ -44,7 +44,7 @@ public class Gerente extends Persona{
 
     @Override
     public String toString() {
-        return "Gerente{" + "cargo=" + cargo + '}';
+        return "Gerente";
     }
     
     
