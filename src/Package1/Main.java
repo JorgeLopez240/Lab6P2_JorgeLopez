@@ -1,6 +1,7 @@
 
 package Package1;
 
+import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 
 public class Main extends javax.swing.JFrame {
@@ -11,16 +12,31 @@ public class Main extends javax.swing.JFrame {
     public Main() {
         
         initComponents();
+        tf_ocupacion.setEnabled(false);
+        tf_horario.setEnabled(false);
+        tf_tiempoTrabajado.setEnabled(false);
+        tf_sueldo.setEnabled(false);
         this.setLocationRelativeTo(null);
         
+        //Modelo - tipo de Persona
         DefaultComboBoxModel modelo
                 = (DefaultComboBoxModel) cb_tipoPersona.getModel();
         modelo.addElement(new Gerente());
         modelo.addElement(new PersonalGeneral());
         cb_tipoPersona.setModel(modelo);
         
+        
+        //Modelo - Cargo gerente
+        DefaultComboBoxModel m2
+                = (DefaultComboBoxModel) cb_cargo.getModel();
+        m2.addElement("Cargo de Planta");
+        m2.addElement("Cargo de Sucursal");
+        cb_cargo.setModel(m2);
+        
     }
 
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -76,7 +92,7 @@ public class Main extends javax.swing.JFrame {
         tf_sueldo = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        bt_agregarPersona = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
@@ -92,6 +108,12 @@ public class Main extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel2.setText("Tipo de persona:");
+
+        cb_tipoPersona.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_tipoPersonaItemStateChanged(evt);
+            }
+        });
 
         jLabel3.setText("ID:");
 
@@ -171,7 +193,12 @@ public class Main extends javax.swing.JFrame {
             .addGap(0, 375, Short.MAX_VALUE)
         );
 
-        jButton1.setText("Agregar Persona");
+        bt_agregarPersona.setText("Agregar Persona");
+        bt_agregarPersona.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_agregarPersonaMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -267,7 +294,7 @@ public class Main extends javax.swing.JFrame {
                         .addGap(87, 87, 87)
                         .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(107, 107, 107)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(bt_agregarPersona, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(126, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
@@ -318,7 +345,7 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(135, 135, 135)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(bt_agregarPersona, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
@@ -431,6 +458,47 @@ public class Main extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void cb_tipoPersonaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_tipoPersonaItemStateChanged
+        if(evt.getStateChange()==2){
+            if(cb_tipoPersona.getSelectedItem()instanceof Gerente){
+                tf_ocupacion.setEnabled(false);
+                tf_horario.setEnabled(false);
+                tf_tiempoTrabajado.setEnabled(false);
+                tf_sueldo.setEnabled(false);
+            }
+        } else if(cb_tipoPersona.getSelectedItem() instanceof PersonalGeneral){
+            tf_userG.setEnabled(false);
+            tf_password.setEnabled(false);
+            cb_cargo.setEnabled(false);
+            tf_ocupacion.setEnabled(true);
+            tf_horario.setEnabled(true);
+            tf_tiempoTrabajado.setEnabled(true);
+            tf_sueldo.setEnabled(true);    
+        }
+    }//GEN-LAST:event_cb_tipoPersonaItemStateChanged
+
+    private void bt_agregarPersonaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_agregarPersonaMouseClicked
+        String id, nombre, sexo, estadoCivil;
+        double edad, altura, peso;
+        if(cb_tipoPersona.getSelectedItem() instanceof Gerente){
+            id=tf_id.getText();
+            nombre=tf_nombre.getText();
+            if(rb_masculino.isSelected()){
+                sexo="M";
+            } else{
+                sexo="F";
+            }
+            if(rb_casado.isSelected()){
+                estadoCivil="Casado";
+            } else{
+                estadoCivil="Soltero";
+            }
+            edad =Integer.parseInt(tf_edad.getText());
+            altura=Integer.parseInt(tf_altura.getText());
+            peso=Integer.parseInt(tf_peso.getText());
+        }
+    }//GEN-LAST:event_bt_agregarPersonaMouseClicked
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -466,9 +534,9 @@ public class Main extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup bg_estado;
     private javax.swing.ButtonGroup bg_sexo;
+    private javax.swing.JButton bt_agregarPersona;
     private javax.swing.JComboBox<String> cb_cargo;
     private javax.swing.JComboBox<String> cb_tipoPersona;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -517,4 +585,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField tf_tiempoTrabajado;
     private javax.swing.JTextField tf_userG;
     // End of variables declaration//GEN-END:variables
+
+    private ArrayList<Persona> personas = new ArrayList();
+
 }
