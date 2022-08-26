@@ -9,6 +9,7 @@ public class Persona {
     private String estado_civil;
     private double altura;
     private double peso;
+    private int edad;
 
     public Persona() {
     }
@@ -18,13 +19,14 @@ public class Persona {
         this.sexo = sexo;
     }
 
-    public Persona(String id, String nombre, String sexo, String estado_civil, double altura, double peso) {
+    public Persona(String id, String nombre, String sexo, String estado_civil, double altura, double peso, int edad) {
         this.id = id;
         this.nombre = nombre;
         this.sexo = sexo;
         this.estado_civil = estado_civil;
         this.altura = altura;
         this.peso = peso;
+        this.edad=edad;
     }
 
     public String getId() {
@@ -75,6 +77,14 @@ public class Persona {
         this.peso = peso;
     }
 
+    public int getEdad() {
+        return edad;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+    
     @Override
     public String toString() {
         return "Persona{" + "nombre=" + nombre + '}';

@@ -3,6 +3,7 @@ package Package1;
 
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 public class Main extends javax.swing.JFrame {
 
@@ -77,7 +78,6 @@ public class Main extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         tf_userG = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        tf_password = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         cb_cargo = new javax.swing.JComboBox<>();
         jLabel16 = new javax.swing.JLabel();
@@ -93,6 +93,7 @@ public class Main extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         bt_agregarPersona = new javax.swing.JButton();
+        pf_password = new javax.swing.JPasswordField();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
@@ -214,8 +215,8 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(cb_cargo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel14)
-                        .addGap(18, 18, 18)
-                        .addComponent(tf_password))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pf_password))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel13)
                         .addGap(18, 18, 18)
@@ -361,12 +362,17 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(tf_ocupacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel14)
-                            .addComponent(tf_password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel18))
-                        .addGap(23, 23, 23)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel14)
+                                    .addComponent(jLabel18))
+                                .addGap(26, 26, 26))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(pf_password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel15)
                             .addComponent(cb_cargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -465,10 +471,13 @@ public class Main extends javax.swing.JFrame {
                 tf_horario.setEnabled(false);
                 tf_tiempoTrabajado.setEnabled(false);
                 tf_sueldo.setEnabled(false);
+                tf_userG.setEnabled(true);
+                pf_password.setEnabled(true);
+                cb_cargo.setEnabled(true);
             }
         } else if(cb_tipoPersona.getSelectedItem() instanceof PersonalGeneral){
             tf_userG.setEnabled(false);
-            tf_password.setEnabled(false);
+            pf_password.setEnabled(false);
             cb_cargo.setEnabled(false);
             tf_ocupacion.setEnabled(true);
             tf_horario.setEnabled(true);
@@ -478,25 +487,53 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_cb_tipoPersonaItemStateChanged
 
     private void bt_agregarPersonaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_agregarPersonaMouseClicked
-        String id, nombre, sexo, estadoCivil;
-        double edad, altura, peso;
-        if(cb_tipoPersona.getSelectedItem() instanceof Gerente){
-            id=tf_id.getText();
-            nombre=tf_nombre.getText();
-            if(rb_masculino.isSelected()){
-                sexo="M";
-            } else{
-                sexo="F";
-            }
-            if(rb_casado.isSelected()){
-                estadoCivil="Casado";
-            } else{
-                estadoCivil="Soltero";
-            }
-            edad =Integer.parseInt(tf_edad.getText());
-            altura=Integer.parseInt(tf_altura.getText());
-            peso=Integer.parseInt(tf_peso.getText());
+        String id, nombre, sexo, estadoCivil, user, password;
+        String cargo ="";
+        double altura, peso;
+        int edad;
+        id=tf_id.getText();
+        nombre=tf_nombre.getText();
+        if(rb_masculino.isSelected()){
+            sexo="M";
+        } else{
+            sexo="F";
         }
+        if(rb_casado.isSelected()){
+            estadoCivil="Casado";
+        } else{
+            estadoCivil="Soltero";
+        }
+        edad =Integer.parseInt(tf_edad.getText());
+        altura=Integer.parseInt(tf_altura.getText());
+        peso=Integer.parseInt(tf_peso.getText());
+        if(cb_tipoPersona.getSelectedItem() instanceof Gerente){
+            user=tf_userG.getText();
+            password = pf_password.getText();
+            cargo+=cb_cargo.getSelectedItem();
+            personas.add(new Gerente(cargo, password, cargo, id, nombre, sexo, estadoCivil, altura, peso, edad));
+            JOptionPane.showMessageDialog(this, "Gerente agregado exitosamente!");
+        } else{
+            String ocupacion, horario;
+            int semanas;
+            double sueldo;
+            ocupacion = tf_ocupacion.getText();
+            horario=tf_horario.getText();
+            semanas=Integer.parseInt(tf_tiempoTrabajado.getText());
+            sueldo=Double.parseDouble(tf_sueldo.getText());
+            personas.add(new PersonalGeneral(ocupacion, horario, semanas, sueldo, id, nombre, sexo, estadoCivil, altura, peso, edad));
+            JOptionPane.showMessageDialog(this, "Personal General agregado existosamente!");
+        }
+        tf_id.setText("");
+        tf_nombre.setText("");
+        tf_edad.setText("");
+        tf_altura.setText("");
+        tf_peso.setText("");
+        tf_userG.setText("");
+        pf_password.setText("");
+        tf_ocupacion.setText("");
+        tf_horario.setText("");
+        tf_tiempoTrabajado.setText("");
+        tf_sueldo.setText("");
     }//GEN-LAST:event_bt_agregarPersonaMouseClicked
 
     public static void main(String args[]) {
@@ -569,6 +606,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JPasswordField pf_password;
     private javax.swing.JRadioButton rb_casado;
     private javax.swing.JRadioButton rb_femenino;
     private javax.swing.JRadioButton rb_masculino;
@@ -579,7 +617,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField tf_id;
     private javax.swing.JTextField tf_nombre;
     private javax.swing.JTextField tf_ocupacion;
-    private javax.swing.JTextField tf_password;
     private javax.swing.JTextField tf_peso;
     private javax.swing.JTextField tf_sueldo;
     private javax.swing.JTextField tf_tiempoTrabajado;
