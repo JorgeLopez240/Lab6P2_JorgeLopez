@@ -65,7 +65,7 @@ public class Main extends javax.swing.JFrame {
         m5.addElement("Baño");
         m5.addElement("Cocina");
      
-        //Arbol
+        //Arbol Personas
         DefaultTreeModel m = (DefaultTreeModel) jt_personas.getModel();
         DefaultMutableTreeNode raiz
                 = (DefaultMutableTreeNode) m.getRoot();
@@ -81,6 +81,21 @@ public class Main extends javax.swing.JFrame {
         Ptipo1.add(Gtipo2);
         
         m.reload();
+        
+        
+        //Arbol Objetos
+        DefaultTreeModel jm2= (DefaultTreeModel) jt_objetos.getModel();
+        DefaultMutableTreeNode raiz2
+                = (DefaultMutableTreeNode) jm2.getRoot();
+        DefaultMutableTreeNode tipo1 = new DefaultMutableTreeNode("Zapato");
+        DefaultMutableTreeNode tipo2 = new DefaultMutableTreeNode("Ropa");
+        DefaultMutableTreeNode tipo3 = new DefaultMutableTreeNode("Hogar");
+        
+        raiz2.add(tipo1);
+        raiz2.add(tipo2);
+        raiz2.add(tipo3);
+        
+        jm2.reload();
         
     }
 
@@ -192,6 +207,8 @@ public class Main extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jt_personas = new javax.swing.JTree();
         jPanel7 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jt_objetos = new javax.swing.JTree();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -693,15 +710,21 @@ public class Main extends javax.swing.JFrame {
 
         tp_principal.addTab("Jerarquía de Personas", jPanel6);
 
+        treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Objetos");
+        jt_objetos.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jScrollPane4.setViewportView(jt_objetos);
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 775, Short.MAX_VALUE)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 775, Short.MAX_VALUE)
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 632, Short.MAX_VALUE)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 582, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 50, Short.MAX_VALUE))
         );
 
         tp_principal.addTab("Jerarquía de Objetos", jPanel7);
@@ -932,6 +955,26 @@ public class Main extends javax.swing.JFrame {
                 }
             }
             model.reload();
+        } else if(tp_principal.getSelectedIndex()==5){
+            DefaultTreeModel model = (DefaultTreeModel) jt_objetos.getModel();
+            DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) model.getRoot();
+            DefaultMutableTreeNode n;
+            for (Objeto o : objetos) {
+                DefaultMutableTreeNode nodo = new DefaultMutableTreeNode(o);
+                if(o instanceof Zapato){
+                    n=(DefaultMutableTreeNode)raiz.getChildAt(0);
+                    DefaultMutableTreeNode x = new DefaultMutableTreeNode(((Objeto)o).getMarca());
+                    n.add(x);
+                } else if(o instanceof Ropa){
+                    n=(DefaultMutableTreeNode)raiz.getChildAt(1);
+                    DefaultMutableTreeNode x = new DefaultMutableTreeNode(((Objeto)o).getMarca());
+                    n.add(x);
+                } else{
+                    n=(DefaultMutableTreeNode)raiz.getChildAt(2);
+                    DefaultMutableTreeNode x = new DefaultMutableTreeNode(((Objeto)o).getMarca());
+                    n.add(x);
+                }
+            }
         }
     }//GEN-LAST:event_tp_principalStateChanged
 
@@ -1035,7 +1078,9 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane js_insh;
+    private javax.swing.JTree jt_objetos;
     private javax.swing.JTree jt_personas;
     private javax.swing.JPasswordField pf_password;
     private javax.swing.JRadioButton rb_casado;
