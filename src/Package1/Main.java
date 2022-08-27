@@ -910,7 +910,28 @@ public class Main extends javax.swing.JFrame {
 
     private void tp_principalStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tp_principalStateChanged
         if(tp_principal.getSelectedIndex()==4){
-            
+            DefaultTreeModel model = (DefaultTreeModel) jt_personas.getModel();
+            DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) model.getRoot();
+            DefaultMutableTreeNode n;
+            for (Persona p : personas) {
+                DefaultMutableTreeNode nodo= new DefaultMutableTreeNode(p);
+                if(p instanceof Gerente){
+                    if(((Gerente) p).getCargo().equals("Cargo de Planta")){
+                         n=(DefaultMutableTreeNode)raiz.getChildAt(0).getChildAt(0);
+                         DefaultMutableTreeNode x = new DefaultMutableTreeNode(((Persona)p).getNombre());
+                         n.add(x);
+                    } else if(((Gerente) p).getCargo().equals("Cargo de Sucursal")){
+                        n=(DefaultMutableTreeNode)raiz.getChildAt(0).getChildAt(1);
+                        DefaultMutableTreeNode x = new DefaultMutableTreeNode(((Persona)p).getNombre());
+                        n.add(x);
+                    }
+                } else{
+                    n=(DefaultMutableTreeNode)raiz.getChildAt(1);
+                    DefaultMutableTreeNode x = new DefaultMutableTreeNode(((Persona)p).getNombre());
+                    n.add(x);
+                }
+            }
+            model.reload();
         }
     }//GEN-LAST:event_tp_principalStateChanged
 
