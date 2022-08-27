@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JColorChooser;
 import javax.swing.JOptionPane;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 
 public class Main extends javax.swing.JFrame {
 
@@ -62,6 +64,23 @@ public class Main extends javax.swing.JFrame {
         m5.addElement("Comedor");
         m5.addElement("Baño");
         m5.addElement("Cocina");
+     
+        //Arbol
+        DefaultTreeModel m = (DefaultTreeModel) jt_personas.getModel();
+        DefaultMutableTreeNode raiz
+                = (DefaultMutableTreeNode) m.getRoot();
+        
+        DefaultMutableTreeNode Ptipo1 = new DefaultMutableTreeNode("Gerente");
+        DefaultMutableTreeNode Ptipo2 = new DefaultMutableTreeNode("Personal General");
+        DefaultMutableTreeNode Gtipo1 = new DefaultMutableTreeNode("Gerente de planta");
+        DefaultMutableTreeNode Gtipo2 = new DefaultMutableTreeNode("Gerente de sucursal");
+        
+        raiz.add(Ptipo1);
+        raiz.add(Ptipo2);
+        Ptipo1.add(Gtipo1);
+        Ptipo1.add(Gtipo2);
+        
+        m.reload();
         
     }
 
@@ -79,7 +98,7 @@ public class Main extends javax.swing.JFrame {
         jScrollBar1 = new javax.swing.JScrollBar();
         bg_sexo = new javax.swing.ButtonGroup();
         bg_estado = new javax.swing.ButtonGroup();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        tp_principal = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -170,11 +189,19 @@ public class Main extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jt_personas = new javax.swing.JTree();
         jPanel7 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tp_principal.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                tp_principalStateChanged(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("Ingrese los datos de la persona.");
@@ -464,7 +491,7 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Crear Persona", jPanel2);
+        tp_principal.addTab("Crear Persona", jPanel2);
 
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -619,7 +646,7 @@ public class Main extends javax.swing.JFrame {
 
         jPanel3.add(cb_lugarCasa, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 450, 130, -1));
 
-        jTabbedPane1.addTab("Crear Objeto", jPanel3);
+        tp_principal.addTab("Crear Objeto", jPanel3);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -632,7 +659,7 @@ public class Main extends javax.swing.JFrame {
             .addGap(0, 632, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Modificar Persona", jPanel4);
+        tp_principal.addTab("Modificar Persona", jPanel4);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -645,20 +672,26 @@ public class Main extends javax.swing.JFrame {
             .addGap(0, 632, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Modificar Objeto", jPanel5);
+        tp_principal.addTab("Modificar Objeto", jPanel5);
+
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Personas");
+        jt_personas.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jScrollPane3.setViewportView(jt_personas);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 775, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 775, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 632, Short.MAX_VALUE)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 32, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Jerarquía de Personas", jPanel6);
+        tp_principal.addTab("Jerarquía de Personas", jPanel6);
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -671,9 +704,9 @@ public class Main extends javax.swing.JFrame {
             .addGap(0, 632, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Jerarquía de Objetos", jPanel7);
+        tp_principal.addTab("Jerarquía de Objetos", jPanel7);
 
-        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 660));
+        getContentPane().add(tp_principal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 660));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -875,6 +908,12 @@ public class Main extends javax.swing.JFrame {
         bt_colorObjeto.setBackground(c);
     }//GEN-LAST:event_bt_colorObjetoMouseClicked
 
+    private void tp_principalStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tp_principalStateChanged
+        if(tp_principal.getSelectedIndex()==4){
+            
+        }
+    }//GEN-LAST:event_tp_principalStateChanged
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -974,8 +1013,9 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane js_insh;
+    private javax.swing.JTree jt_personas;
     private javax.swing.JPasswordField pf_password;
     private javax.swing.JRadioButton rb_casado;
     private javax.swing.JRadioButton rb_femenino;
@@ -1003,6 +1043,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField tf_tela;
     private javax.swing.JTextField tf_tiempoTrabajado;
     private javax.swing.JTextField tf_userG;
+    private javax.swing.JTabbedPane tp_principal;
     // End of variables declaration//GEN-END:variables
 
     private ArrayList<Persona> personas = new ArrayList();
